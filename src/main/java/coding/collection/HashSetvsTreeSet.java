@@ -37,11 +37,11 @@ public class HashSetvsTreeSet  {
     @Test
     public void test_benchmark(){
 
-        var random = new Random();
+        Random random = new Random();
         LinkedList<String> words = new LinkedList<>();
         for(int i = 0; i < 1000000; i++) {
 
-            var word = random.ints(97, 123)
+            String word = random.ints(97, 123)
                     .limit(12)
                     .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
                     .toString();
@@ -50,14 +50,14 @@ public class HashSetvsTreeSet  {
         }
 
 
-        var hashSet = new HashSet<String>();
-        var treeSet = new TreeSet<String>();
+        HashSet<String> hashSet = new HashSet<String>();
+        TreeSet<String> treeSet = new TreeSet<String>();
 
-        var start = System.currentTimeMillis();
-        for(var w : words) {
+        Long start = System.currentTimeMillis();
+        for(String w : words) {
             hashSet.add(w);
         }
-        for(var w : words) {
+        for(String w : words) {
             hashSet.contains(w);
         }
         System.out.println("hashSet time:" + (System.currentTimeMillis() - start));

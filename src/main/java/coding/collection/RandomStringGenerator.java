@@ -16,15 +16,27 @@ public class RandomStringGenerator<T> implements Iterable<T> {
 
     }
 
+    /**&
+     * 实现迭代方法
+     * @return
+     */
     @Override
     public Iterator<T> iterator() {
 
         return new Iterator<T>() {
+            /**
+             * 是否包含下一个值
+             * @return
+             */
             @Override
             public boolean hasNext() {
                 return true;
             }
 
+            /**
+             * 返回下一个值
+             * @return
+             */
             @Override
             public T next() {
                 return list.get((int) (list.size() * Math.random()));
@@ -37,9 +49,9 @@ public class RandomStringGenerator<T> implements Iterable<T> {
         var list = Arrays.asList("List", "Tree", "Array");
         var gen = new RandomStringGenerator<String>(list);
 
-//        for(var s: gen) {
-//            System.out.println(s);
-//        }
+        for(var s: gen) {
+            System.out.println(s);
+        }
 
 //        var it = gen.iterator();
 //        for(int i = 0; i < 100; i++) {

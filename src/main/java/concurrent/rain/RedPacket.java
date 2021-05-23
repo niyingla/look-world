@@ -18,6 +18,7 @@ public class RedPacket {
     public static RedPacket create(int money) throws InterruptedException {
         Thread.sleep((long) (1000 + (Math.random() * 1000)));
         // 创建红包的逻辑
+        return new RedPacket(2);
     }
 
     static class FailToSendException extends Exception {
