@@ -45,11 +45,23 @@ public class Event<T>{
         }
     }
 
+    /**
+     * 提供一个函数式接口
+     * @param <A>
+     * @param <B>
+     */
     @FunctionalInterface
     interface FN<A, B> {
         B apply(A a);
     }
 
+
+    /**
+     * 定义替换方法 内容是 调用前面的函数式接口的实际载体 （FN 接口）(Transforms.transform 实际载体)
+     * @param f
+     * @param <B>
+     * @return
+     */
     <B> Event<?> map(FN<T, B> f) {
         return new Event<>(f.apply(this.data));
     }

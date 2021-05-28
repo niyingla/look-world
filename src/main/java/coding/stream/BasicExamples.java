@@ -78,6 +78,7 @@ public class BasicExamples {
         System.out.println("time:" + (System.currentTimeMillis() - t0));
 
         // 用forkJoin在试一次
+        // pool.submit 执行 parallelStream 会用自己替换当中的执行器
         var pool = new ForkJoinPool(2);
         var t1 = System.currentTimeMillis();
         var max = pool.submit(() -> list.parallelStream().max(Comparator.naturalOrder())).get();
