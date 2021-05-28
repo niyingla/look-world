@@ -137,9 +137,12 @@ public class BufferExamples {
         }
         //打印未读取数据大小
         System.out.format("limit-pos=%d\n", bbuf.limit() - bbuf.position());
-        //拷贝未读取数据 末尾 - 最大
+        //拷贝未读取数据 写入位置 - 实际写入限制
         byte[] copyOfRange = Arrays.copyOfRange(bbuf.array(), bbuf.position(), bbuf.limit());
         //一般有三个指针 读取位 末尾位 最大位
+        // position 下一个应该写入位置 (写一次后移一次)
+        // limit 实际写入限制 （使用控制上限 超过就溢出）
+        // capacity 容量上限
         System.out.println(copyOfRange);
 
     }
