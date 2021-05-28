@@ -108,9 +108,12 @@ public class WordCount {
         System.out.format("split to %d tasks\n", tasks.size());
 
         HashMap totalMap = new HashMap<String, Integer>();
+        //循环获取所有任务结果
         for(Future<HashMap<String, Integer>> future: tasks) {
+            //获取结果等待
             HashMap<String, Integer> map = future.get();
             for (Map.Entry<String, Integer> entry : map.entrySet()) {
+                //叠加
                 incKey(entry.getKey(), totalMap, entry.getValue());
             }
         }
