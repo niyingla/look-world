@@ -19,7 +19,7 @@ public class QuickSort implements IImutableSorter{
         var x = A.get(0);
         var left = A.stream().filter(a -> a < x)
                     .collect(toList());
-        var mid = A.stream().filter(a -> a == x)
+        var mid = A.stream().filter(a -> a.equals(x))
                 .collect(toList());
         var right = A.stream().filter(a -> a > x)
                 .collect(toList());
