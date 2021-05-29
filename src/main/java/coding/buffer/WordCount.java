@@ -69,16 +69,19 @@ public class WordCount {
             // rw	读操作和写操作都是允许的
             // rws	每当进行写操作，同步的刷新到磁盘，刷新内容和元数据
             // rwd	每当进行写操作，同步的刷新到磁盘，刷新内容
+            //创建一个文件岁间读取渠道对象
             FileChannel channel = new RandomAccessFile(this.fileName, "rw").getChannel();
 
             // [start, end] -> Memory
             // Device -> Kernel Space -> UserSpace(buffer) -> Thread
+            //文件通道的可读可写要建立在文件流本身可读写的基础之上
+            //把文件影射为内存映像文件
             MappedByteBuffer mbuf = channel.map(
                     FileChannel.MapMode.READ_ONLY,
                     this.start,
                     this.end - this.start
             );
-            var str = StandardCharsets.US_ASCII.decode(mbuf).toString();
+            String str = StandardCharsets.US_ASCII.decode(mbuf).toString();
             return countByString(str);
         }
     }
