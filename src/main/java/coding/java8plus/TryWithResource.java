@@ -12,7 +12,7 @@ public class TryWithResource {
 
     @Test
     public void test() throws FileNotFoundException, IOException {
-        var fin = new FileInputStream("somefile");
+        FileInputStream fin = new FileInputStream("somefile");
         try(fin) { // AutoClose
             fin.read();
         }

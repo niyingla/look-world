@@ -13,7 +13,7 @@ public class MethodReference {
     @Test
     public void test(){
         // 1-2-3-4-5
-        var val = List.of(1,2,3,4,5).stream()
+        Optional<Integer> val = List.of(1,2,3,4,5).stream()
                 .map(Object::toString)
                 .map(Integer::new)
                 .reduce((a,b)->a+b);

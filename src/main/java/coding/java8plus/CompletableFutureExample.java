@@ -11,7 +11,7 @@ public class CompletableFutureExample {
 
     @Test
     public void test() throws ExecutionException, InterruptedException {
-        var future = new CompletableFuture<>();
+        CompletableFuture future = new CompletableFuture<>();
         Executors.newCachedThreadPool().submit(() -> {
             //Thread.sleep(1000);
             // future.complete("Hello");
@@ -27,8 +27,8 @@ public class CompletableFutureExample {
 
     @Test
     public void test2() throws ExecutionException, InterruptedException {
-        var successFuture = CompletableFuture.completedFuture("Hello");
-        var failFuture = CompletableFuture.failedFuture(new InterruptedException());
+        CompletableFuture successFuture = CompletableFuture.completedFuture("Hello");
+        CompletableFuture failFuture = CompletableFuture.failedFuture(new InterruptedException());
 
         System.out.println(successFuture.get());
 
@@ -36,6 +36,20 @@ public class CompletableFutureExample {
             System.out.println("error"); // print
         }
         System.out.println(failFuture.get()); // Exception
+    }
+
+    @Test
+    public void ss(){
+        int i = 1;
+        CompletableFuture
+                //异步执行
+                .supplyAsync(() -> i + 7)
+                //然后执行
+                .thenApply(ui->ui*2)
+                //然后执行
+                .thenApply(ui->ui*3)
+                //完成时执行 r 结果 e 一场
+                .whenComplete((r,e)->System.out.println(r));
     }
 
 }

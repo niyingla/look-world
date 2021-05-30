@@ -46,7 +46,7 @@ public class Event<T>{
     }
 
     /**
-     * 提供一个函数式接口
+     * 提供一个函数式接口 使之可以在lambda内被匿名引用
      * @param <A>
      * @param <B>
      */
