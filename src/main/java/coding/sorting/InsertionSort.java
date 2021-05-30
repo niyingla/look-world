@@ -10,6 +10,7 @@ public class InsertionSort implements IMutableSorter {
             int c = A[i];
             int j = i;
 
+            //换位
             for(; j > 0 && A[j-1] > c;j--) {
                 A[j] = A[j-1];
             }
@@ -17,5 +18,15 @@ public class InsertionSort implements IMutableSorter {
         }
     }
 
+    public static void main(String[] args) {
+        InsertionSort insertionSort = new InsertionSort();
+
+        int[] a = {222, 22, 324};
+
+        insertionSort.sort(a);
+
+        System.out.println(a);
+
+    }
 
 }

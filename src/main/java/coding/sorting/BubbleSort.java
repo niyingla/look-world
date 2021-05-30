@@ -1,5 +1,8 @@
 package coding.sorting;
 
+/**
+ * 冒泡排序
+ */
 public class BubbleSort implements IMutableSorter {
 
     @Override
@@ -10,6 +13,12 @@ public class BubbleSort implements IMutableSorter {
         }
     }
 
+    /**
+     * 比较发小 交换位置
+     * @param A
+     * @param i
+     * @param j
+     */
     private void bubble(int[] A, int i, int j) {
         for(int k = 0; k < j - 1; k++) {
             if(A[k] > A[k+1]) {
