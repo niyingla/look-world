@@ -76,11 +76,12 @@ public class SortTests {
     public void test_bucketSort1(){
         var bucketSort = new BucketSort1();
         ArrayList<Integer> l = new ArrayList<>();
-
+        //创建随机数数组内容
         for(int i = 0; i < 1000000; i++) {
             l.add(100 + (int) (Math.random() * 1000));
         }
         var start = System.currentTimeMillis();
+        // k 桶的数量 max 最大 min 最小
         List<Integer> A = bucketSort.sort(l, 10, 1100, 100);
         System.out.println("time:" + (System.currentTimeMillis() - start));
         assertSorted(A);
