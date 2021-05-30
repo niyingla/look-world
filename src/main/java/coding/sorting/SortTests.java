@@ -10,22 +10,34 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class SortTests {
+    /**
+     * 原则上 内存操作尽量多读 少写 因为写需要写入多级缓存 读却命中率很高
+     */
 
     @Test
     public void test_insertionSort(){
         sortTest(InsertionSort.class, 100000);
     }
 
+    /**
+     * 选择排序
+     */
     @Test
     public void test_selectionSort() {
         sortTest(SelectionSort.class, 100000);
     }
 
+    /**
+     * 冒泡排序
+     */
     @Test
     public void test_bubbleSort(){
         sortTest(BubbleSort.class, 100000);
     }
 
+    /**
+     * 合并排序
+     */
     @Test
     public void test_mergeSort(){
         sortTest(MergeSort.class, 100000);
@@ -75,7 +87,6 @@ public class SortTests {
     }
 
     public void sortTest(Class cls, int N){
-
 
         try {
             var constructor = cls.getConstructor();

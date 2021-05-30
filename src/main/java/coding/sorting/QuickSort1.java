@@ -25,18 +25,24 @@ public class QuickSort1 implements IMutableSorter {
     }
 
     private int partition(int[] A, int l, int r) {
+        //取初始位 元素
         int x = A[l];
-
+        //初始位 +1 = 默认比较位
         int i = l + 1;
+        //末位
         int j = r;
-
+        //直到循环到初始位 = 末位
         while(i != j) {
+            //默认比较位 是否 小于初始位
             if(A[i] < x) {
+                //不小于 继续
                 i++;
             } else {
+                //小于 换位
                Helper.swap(A, i, --j);
             }
         }
+        //换位 默认比较位-1 和 初始位
         Helper.swap(A, i-1, l);
         return i-1;
 
