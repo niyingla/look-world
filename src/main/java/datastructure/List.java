@@ -170,7 +170,7 @@ public class List<T> {
         if(head == null || head.next == null) {
             return false;
         }
-        //慢指针
+        //慢指针每次跑一个
         var slow = head;
         //快指针 相差两个指针每次跑两个
         var fast = head.next.next;
