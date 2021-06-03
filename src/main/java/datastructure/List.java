@@ -172,7 +172,7 @@ public class List<T> {
         }
         //慢指针
         var slow = head;
-        //快指针 相差两个指针
+        //快指针 相差两个指针每次跑两个
         var fast = head.next.next;
         while(fast != null && fast.next != null) {
             //追上了 就返回 有环
