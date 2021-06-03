@@ -162,22 +162,25 @@ public class List<T> {
         return false;
     }
 
+    /**
+     * 是否有环
+     * @return
+     */
     public boolean hasLoop2(){
-
         if(head == null || head.next == null) {
             return false;
         }
-
+        //慢指针
         var slow = head;
+        //快指针 相差两个指针
         var fast = head.next.next;
         while(fast != null && fast.next != null) {
+            //追上了 就返回 有环
             if(fast == slow) {return true;}
             slow = slow.next;
             fast = fast.next.next;
         }
         return false;
-
-
     }
 
 
