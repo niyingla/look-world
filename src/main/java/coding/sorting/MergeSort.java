@@ -40,7 +40,6 @@ public class MergeSort implements IMutableSorter {
         //复制出两条等长数组
         int[] B = Arrays.copyOfRange(A, l, mid+1);
         int[] C = Arrays.copyOfRange(A, mid, r+1);
-        System.out.println(B.length);
         //末尾放置极值
         B[B.length-1] = C[C.length - 1] = Integer.MAX_VALUE;
 

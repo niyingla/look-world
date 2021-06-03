@@ -15,7 +15,7 @@ public class SortTests {
      */
 
     @Test
-    public void test_insertionSort(){
+    public void test_insertionSort() {
         sortTest(InsertionSort.class, 100000);
     }
 
@@ -31,7 +31,7 @@ public class SortTests {
      * 冒泡排序
      */
     @Test
-    public void test_bubbleSort(){
+    public void test_bubbleSort() {
         sortTest(BubbleSort.class, 100000);
     }
 
@@ -39,31 +39,31 @@ public class SortTests {
      * 合并排序
      */
     @Test
-    public void test_mergeSort(){
+    public void test_mergeSort() {
         sortTest(MergeSort.class, 100000);
     }
 
     @Test
-    public void test_quickSort(){
+    public void test_quickSort() {
         sortTest(QuickSort.class, 100000);
     }
 
     @Test
-    public void test_quicksort1(){
+    public void test_quicksort1() {
         sortTest(QuickSort1.class, 1000000);
     }
 
     @Test
-    public void test_quicksort(){
+    public void test_quicksort() {
         sortTest(QuickSort.class, 1000000);
     }
 
     @Test
-    public void test_bucketSort(){
+    public void test_bucketSort() {
         var bucketSort = new BucketSort();
         ArrayList<Integer> l = new ArrayList<>();
 
-        for(int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < 1000000; i++) {
             l.add((int) (Math.random() * 100));
         }
         var start = System.currentTimeMillis();
@@ -73,11 +73,11 @@ public class SortTests {
     }
 
     @Test
-    public void test_bucketSort1(){
+    public void test_bucketSort1() {
         var bucketSort = new BucketSort1();
         ArrayList<Integer> l = new ArrayList<>();
         //创建随机数数组内容
-        for(int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < 1000000; i++) {
             l.add(100 + (int) (Math.random() * 1000));
         }
         var start = System.currentTimeMillis();
@@ -87,22 +87,22 @@ public class SortTests {
         assertSorted(A);
     }
 
-    public void sortTest(Class cls, int N){
+    public void sortTest(Class cls, int N) {
 
         try {
             var constructor = cls.getConstructor();
             var rawInst = constructor.newInstance();
             var start = System.currentTimeMillis();
-            if(rawInst instanceof IImutableSorter) {
+            if (rawInst instanceof IImutableSorter) {
                 var A = gen(N);
-                var inst = (IImutableSorter)rawInst;
+                var inst = (IImutableSorter) rawInst;
                 A = inst.sort(A);
                 System.out.println("time usage:" + (System.currentTimeMillis() - start));
                 assertSorted(A);
 
-            } else if(rawInst instanceof IMutableSorter) {
-                var A = gen(N).stream().mapToInt(x->x).toArray();
-                var inst = (IMutableSorter)rawInst;
+            } else if (rawInst instanceof IMutableSorter) {
+                var A = gen(N).stream().mapToInt(x -> x).toArray();
+                var inst = (IMutableSorter) rawInst;
                 inst.sort(A);
                 System.out.println("time usage:" + (System.currentTimeMillis() - start));
                 assertSorted(A);
@@ -135,9 +135,9 @@ public class SortTests {
         }
     }
 
-    static List<Integer> gen(int n){
+    static List<Integer> gen(int n) {
         var A = new ArrayList<Integer>();
-        for(int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             A.add((int) (Math.random() * n));
         }
         return A;
