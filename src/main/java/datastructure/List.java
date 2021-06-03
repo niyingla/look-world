@@ -133,7 +133,7 @@ public class List<T> {
         var rest = _reverse2(head.next);
         //前后换序 head的下一个的下一个换成当前（指针翻转） head.next 为current 然后前后换
         head.next.next = head;
-        //断开 head 本来的 下一个的链接 （断开之前 head的下一个已经传入递归）
+        //断开 pre和head的指向 本来的 下一个的链接 （断开之前 head的下一个已经传入递归）
         head.next = null;
         return rest;
     }
