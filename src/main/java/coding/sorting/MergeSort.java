@@ -29,7 +29,7 @@ public class MergeSort implements IMutableSorter {
     }
 
     /**
-     * 递归最底层的2个元素合并 然后 4 -》8 最后合并所有 所以每一次合并都有意义
+     * 递归最底层的2个元素排序合并 然后 4 -》8 最后合并所有 所以每一次合并都有意义
      * @param A
      * @param l
      * @param mid
