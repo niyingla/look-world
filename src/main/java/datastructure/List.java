@@ -142,14 +142,20 @@ public class List<T> {
         head = _reverse2(head);
     }
 
+    /**
+     * 是否存在环
+     * @return
+     */
     public boolean hasLoop1(){
         var set = new HashSet<>();
 
         var p = head;
         while(p != null) {
+            //集合中已经存在 表示有环
             if(set.contains(p)) {
                 return true;
             }
+            //加入集合
             set.add(p);
             p = p.next;
         }
