@@ -24,9 +24,10 @@ public class TreePrinter {
         //每行数据
         var lines = new StringBuilder[h*2];
         for(int i = 0; i < h*2; i++) {
+            //创建打印数据行
             lines[i] = new StringBuilder(String.format("%" + W + "s", ""));
         }
-
+        //答应节点数据
         printNode(lines, W, root, 0, 0);
         for(var line : lines) {
             System.out.println(line.toString());
