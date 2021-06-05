@@ -2,13 +2,24 @@ package datastructure;
 
 import org.junit.Test;
 
+/**
+ * 红黑树的大小顺序
+ * 右 中 左 依次递加
+ * @param <T>
+ */
+
 public class BSTree<T extends Comparable<T>> {
 
+    //根节点
     BSTNode<T> root = null;
 
+    //树节点
     static class BSTNode<T> {
+        //左侧元素
         BSTNode<T> left = null;
+        //右侧元素
         BSTNode<T> right = null;
+        //中间元素（数据本身）
         T data;
 
         public BSTNode(T data) {
@@ -18,22 +29,31 @@ public class BSTree<T extends Comparable<T>> {
 
     private void add(BSTNode<T> node, BSTNode<T> element) {
 
+        //小于 在左侧
         if(element.data.compareTo(node.data) <= 0) {
+            //不存在左下级
             if(node.left == null) {
+                //直接指向
                 node.left = element;
                 return;
             }
+            //继续递归往下添加
             add(node.left, element);
         } else {
+            //大于在右侧
+
+            //不存在右下级
             if(node.right == null) {
                 node.right = element;
                 return;
             }
+            //继续递归往下添加
             add(node.right, element);
         }
 
     }
 
+    //添加
     public void add(T element) {
         var node = new BSTNode<>(element);
         if(root == null) {
@@ -45,6 +65,11 @@ public class BSTree<T extends Comparable<T>> {
 
     }
 
+    /**
+     * 先序
+     * @param node
+     * @param <T>
+     */
     <T> void preOrder(BSTNode<T> node) {
 
         if(node == null) {
@@ -57,6 +82,11 @@ public class BSTree<T extends Comparable<T>> {
 
     }
 
+    /**
+     * 后序
+     * @param node
+     * @param <T>
+     */
     <T> void postOrder(BSTNode<T> node){
         if(node == null) {
             return;
@@ -68,6 +98,11 @@ public class BSTree<T extends Comparable<T>> {
 
     }
 
+    /**
+     * 中序
+     * @param node
+     * @param <T>
+     */
     <T> void inOrder(BSTNode<T> node){
         if(node == null) {
             return;
