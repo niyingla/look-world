@@ -7,6 +7,10 @@ import java.util.LinkedList;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * 队列
+ * @param <T>
+ */
 public class Queue<T> {
     LinkedList<T> list = new LinkedList<>();
     public void enqueue(T e){

@@ -85,20 +85,14 @@ public class LockFreeStack<T> {
                 }
 
             });
-
             t.start();
             t.join();
         }
-
         Integer c = 0;
         while(stack.pop() != null) {
             c ++;
         }
-
-
         assertEquals(c+"", "1600");
-
-
     }
 
 }

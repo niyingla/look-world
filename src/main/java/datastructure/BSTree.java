@@ -66,7 +66,9 @@ public class BSTree<T extends Comparable<T>> {
     }
 
     /**
-     * 先序
+     * 根节点 位置 在哪就是什么序
+     *
+     * 先序 根节点->左子树->右子树
      * @param node
      * @param <T>
      */
@@ -83,7 +85,7 @@ public class BSTree<T extends Comparable<T>> {
     }
 
     /**
-     * 后序
+     * 后序 左子树->右子树->根节点
      * @param node
      * @param <T>
      */
@@ -99,7 +101,8 @@ public class BSTree<T extends Comparable<T>> {
     }
 
     /**
-     * 中序
+     * 中序 左子树->根节点->右子树
+     * 因为满足 左中右 小到大顺序 所以打印是 从小到大 满足二茬搜索树
      * @param node
      * @param <T>
      */
@@ -114,17 +117,24 @@ public class BSTree<T extends Comparable<T>> {
 
     }
 
+    /**
+     * 广度先搜索 从上往下 先 平级再 下级
+     * （深度优先 从上往下 先 下级再 平级）
+     * @param node
+     * @param <T>
+     */
     // Breadth First Search
     public static <T> void bfs(BSTNode<T> node){
-
-
         var queue = new Queue<BSTNode<T>>();
+        //进入队列
         queue.enqueue(node);
 
         while(queue.size() > 0) {
+            //出队
             var item = queue.dequeue();
+            //打印出队元素
             System.out.println(item.data);
-
+            //子元素入队
             if(item.left != null)
                 queue.enqueue(item.left);
             if(item.right != null)
@@ -186,7 +196,7 @@ public class BSTree<T extends Comparable<T>> {
         var printer = new TreePrinter();
         printer.print(tree.root);
 
-        tree.reverse(tree.root);
+        BSTree.reverse(tree.root);
         printer.print(tree.root);
     }
 

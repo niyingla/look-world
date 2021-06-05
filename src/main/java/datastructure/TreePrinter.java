@@ -5,10 +5,17 @@ import java.util.ArrayList;
 
 public class TreePrinter {
 
+    /**
+     * 计算树高度
+     * @param node
+     * @param <T>
+     * @return
+     */
     <T> int heightOf(BSTree.BSTNode<T> node) {
         if(node == null) {
             return 0;
         }
+        //递归调用 高的继续 +1 计算
         return Math.max(
                 heightOf(node.left),
                 heightOf(node.right)
@@ -19,7 +26,7 @@ public class TreePrinter {
     public <T> void print(BSTree.BSTNode<T> root) {
         //找出结构高度
         int h = heightOf(root);
-        //2的高度次幂
+        //当前层数 最大容纳元素数 二次幂 * 2
         int W = 2 * (int) Math.pow(2, h);
         //每行数据
         var lines = new StringBuilder[h*2];
@@ -38,14 +45,14 @@ public class TreePrinter {
     /**
      * 答应
      * @param lines 打印数据行
-     * @param W 行数 * 2
+     * @param W 当前层次数 最大容纳元素数 * 2
      * @param node 节点
      * @param h 行
      * @param base 基础位置
      * @param <T>
      */
     private <T> void printNode(StringBuilder[] lines, int W,  BSTree.BSTNode<T> node, int h, int base) {
-        //数量
+        //当前行数量
         var nums = Math.pow(2, h);
         //位置 总数/数量*2
         var pos = base + (int)(W / (nums *  2));
