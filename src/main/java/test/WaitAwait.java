@@ -14,6 +14,7 @@ public class WaitAwait {
             System.out.println("before-wait...1");
             try {
                 lock.lock();
+                //此处注释第一种方式等待
 //                synchronized (obj) {
 //                    obj.wait();
 //                }
@@ -47,7 +48,7 @@ public class WaitAwait {
         t2.start();
 
 
-        Thread.sleep(1);
+        Thread.sleep(3);
         lock.lock();
         waitCond.signalAll();
         lock.unlock();

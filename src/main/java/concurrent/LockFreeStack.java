@@ -9,6 +9,11 @@ import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicStampedReference;
 
 public class LockFreeStack<T> {
+    /**
+     * 并行 多线程完全同时执行
+     * 并发 多线程交替执行
+     * @param <T>
+     */
 
     static class Node<T> {
 
@@ -83,7 +88,7 @@ public class LockFreeStack<T> {
                 for(int j = 0; j < 100; j++ ){
                     stack.push(j);
                 }
-
+//
             });
             t.start();
             t.join();
