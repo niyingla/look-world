@@ -5,19 +5,22 @@ import java.util.concurrent.CyclicBarrier;
 
 public class CyclicBarrierTest {
     CyclicBarrier barrier;
+    //计数次数
     int page = 0;
 
     public CyclicBarrierTest(){
+        //创建栅栏 达到目标后执行的方法
         barrier = new CyclicBarrier(2, () -> {
-
             System.out.println("sync...");
             page ++;
         });
     }
 
+    /**
+     * 准备产品
+     */
     void prepareProducts() {
         while(page < 1000) {
-
             try {
                 System.out.println("fetch product...");
                 int x = barrier.await();
@@ -32,6 +35,9 @@ public class CyclicBarrierTest {
         }
     }
 
+    /**
+     * 准备订单
+     */
     void prepareDeliveryOrders()  {
         while (page < 1000) {
             try {

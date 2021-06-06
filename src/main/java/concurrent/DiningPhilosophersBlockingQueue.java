@@ -6,6 +6,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicStampedReference;
 
 public class DiningPhilosophersBlockingQueue implements Runnable {
+    /**
+     * CLH队列 为了实现快速
+     * 使用尾部插入 最后一个节点的next和尾部指向新增加元素
+     * 头部删除 头部指向第一个元素的next
+     */
 
     Philosopher[] phis;
     volatile int forks[];

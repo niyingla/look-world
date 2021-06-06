@@ -10,6 +10,8 @@ import java.util.concurrent.atomic.AtomicStampedReference;
 
 public class LockFreeStack<T> {
     /**
+     * 公平锁 等待队列按序进行
+     * 非公平锁 加入时尝试获取锁 （更高效）
      * 并行 多线程完全同时执行
      * 并发 多线程交替执行
      * @param <T>
