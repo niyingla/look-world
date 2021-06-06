@@ -12,14 +12,14 @@ public class Foo {
 
 
     /**
-     * 强制一致 （前后其他代码 也不会重排）
+     * 强制一致 （之前其他代码 也不会重排）
      */
     static volatile DbConnection ref;
 
     /**
      * happens before 约束 java 9之后
-     * 保证在他之前的指令在他之前完成
-     * 保证在他之后的指令在他之后完成
+     * 保证在他之前的指令在他之前完成就行
+     * 保证在他之后的指令在他之后完成就行
      * ref1.getAcquire() 获取内容 判断为空
      * ref1.set() 设置内容
      *
