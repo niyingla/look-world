@@ -53,6 +53,7 @@ public class CyclicBarrierTest {
     }
 
     void run() {
+        //生产一份 同时准备一份 然后放开栅栏
         new Thread(this::prepareProducts).start();
         new Thread(this::prepareDeliveryOrders).start();
     }
