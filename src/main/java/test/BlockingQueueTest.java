@@ -29,6 +29,7 @@ public class BlockingQueueTest {
         // Consumer
         for(int i = 0; i < 10; i++) {
             new Thread(() -> {
+
                 while(true) {
                     Integer x = null;
                     try {

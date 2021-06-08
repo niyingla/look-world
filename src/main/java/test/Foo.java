@@ -17,7 +17,7 @@ public class Foo {
     static volatile DbConnection ref;
 
     /**
-     * happens before 约束 java 9之后
+     * happens before (前面带来的变化在后面可以观察到) 约束 java 9之后
      * 保证在他之前的指令在他之前完成就行
      * 保证在他之后的指令在他之后完成就行
      * ref1.getAcquire() 获取内容 判断为空
