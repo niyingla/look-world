@@ -7,7 +7,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Scheduler {
 
+    //放置一个数据的队列 元素必须消费下一个才能加入
     SynchronousQueue<Runnable> tasks = new SynchronousQueue<>(false);
+    //区分方法 来消费
     //LinkedTransferQueue<Runnable> tasks = new LinkedTransferQueue<>();
 
     static AtomicInteger idCount = new AtomicInteger(0);
@@ -55,6 +57,7 @@ public class Scheduler {
         //tasks.offer(r)
         // DualQueue
         // LinkedBlockingQueue
+        // transfer方法表示生产者传递数据给消费者进行消费
 //        while(!tasks.tryTransfer(r)) {
 //            Thread.onSpinWait();
 //            new Thread(new Worker()).start();
