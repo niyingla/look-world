@@ -6,6 +6,12 @@ public class BlockingQueueTest {
 
 
     public static void main(String[] argv) {
+        //阻塞队列三组接口
+
+        //抛异常 add / remove
+        //非阻塞 offer / poll
+        //阻塞 puut / take
+
         BlockingQueue<Integer> queue;
         //queue = new ArrayBlockingQueue<Integer>(10);
         //queue = new LinkedBlockingQueue<Integer>();
