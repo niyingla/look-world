@@ -2,6 +2,9 @@ package test;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 防止指令重排
+ */
 public class ReOrdering {
 
     volatile static int a = 0;

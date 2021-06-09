@@ -1,16 +1,14 @@
 package test;
 
-import java.util.concurrent.LinkedTransferQueue;
 import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.TransferQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Scheduler {
 
     //放置一个数据的队列 元素必须消费下一个才能加入
     SynchronousQueue<Runnable> tasks = new SynchronousQueue<>(false);
-    //区分方法 来消费
-    //LinkedTransferQueue<Runnable> tasks = new LinkedTransferQueue<>();
+    //区分方法 来消费 transfer方法 和SynchronousQueue类似
+//    LinkedTransferQueue<Runnable> tasks = new LinkedTransferQueue<>();
 
     static AtomicInteger idCount = new AtomicInteger(0);
 
@@ -67,7 +65,6 @@ public class Scheduler {
         if(!tasks.offer(r)){
             //等待少量cpu周期
             Thread.onSpinWait();
-            //创建新的线程
             new Thread(new Worker()).start();
         }
     }

@@ -4,10 +4,16 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class WaitAwait {
+    /**
+     *
+     * @param argv
+     * @throws InterruptedException
+     */
     public static void main(String[] argv) throws InterruptedException {
 
         var lock = new ReentrantLock();
         Condition waitCond = lock.newCondition();
+        Object obj = new Object();
 
 
         var t1 = new Thread(() -> {
@@ -52,6 +58,9 @@ public class WaitAwait {
         lock.lock();
         waitCond.signalAll();
         lock.unlock();
+//        synchronized(obj){
+//            obj.notifyAll();
+//        }
 
     }
 }
