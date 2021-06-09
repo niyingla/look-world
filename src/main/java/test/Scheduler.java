@@ -5,10 +5,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Scheduler {
 
-    //放置一个数据的队列 元素必须消费下一个才能加入
+    /**
+     * 放置一个数据的队列 元素必须消费下一个才能加入 (match操作)
+     * （原理上这两个队列 两边插入不同状态的元素进行匹配 才能remove）
+     * 支持dualQueue （双FIFO(先进先出)排队）LinkedTransferQueue
+     * 支持dualQueue dualStack 双FIFO(先进先出)排队） SynchronousQueue
+     */
     SynchronousQueue<Runnable> tasks = new SynchronousQueue<>(false);
     //区分方法 来消费 transfer方法 和SynchronousQueue类似
-//    LinkedTransferQueue<Runnable> tasks = new LinkedTransferQueue<>();
+    //LinkedTransferQueue<Runnable> tasks = new LinkedTransferQueue<>();
 
     static AtomicInteger idCount = new AtomicInteger(0);
 
