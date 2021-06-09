@@ -83,8 +83,9 @@ public class LockFreeStack<T> {
     }
 
 
-
-
+    /**
+     * 单机版
+     */
     @Test
     public void testSingle(){
 
@@ -101,6 +102,10 @@ public class LockFreeStack<T> {
         }
     }
 
+    /**
+     * 多线程版本
+     * @throws InterruptedException
+     */
     @Test
     public void testMultiThreads() throws InterruptedException {
         var stack = new LockFreeStack<Integer>();

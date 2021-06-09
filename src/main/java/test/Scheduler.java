@@ -6,9 +6,17 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Scheduler {
 
     /**
-     * 是否lockfree 判断是否当前线程故障，会影响释放。
+     * 是否lock free 判断是否当前线程故障，会影响释放。（或者保证每次都有线程在进步）
      * 例子 自旋cas 就是lock-free
      * cas 写入状态 然后执行 再cas 写回去 就是有锁
+     *
+     * obstruction free
+     * 线程隔离，线程不一定进步，最终可以进步
+     * 举例 嵌套cas 第一个cas只更新版本号 检查是否有执行权 第二个真是cas 修改值和版本号
+     *
+     * wait free
+     * 保证所有线程同时进步
+     * 举例 copyOnWrite的读线程
      *
      * 放置一个数据的队列 元素必须消费下一个才能加入 (match操作)
      * （原理上这两个队列 两边插入不同状态的元素进行匹配 才能remove）
