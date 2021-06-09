@@ -6,10 +6,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Scheduler {
 
     /**
+     * 是否lockfree 判断是否当前线程故障，会影响释放。
+     * 例子 自旋cas 就是lock-free
+     * cas 写入状态 然后执行 再cas 写回去 就是有锁
+     *
      * 放置一个数据的队列 元素必须消费下一个才能加入 (match操作)
      * （原理上这两个队列 两边插入不同状态的元素进行匹配 才能remove）
      * 支持dualQueue （双FIFO(先进先出)排队）LinkedTransferQueue
-     * 支持dualQueue dualStack 双FIFO(先进先出)排队） SynchronousQueue
+     * 支持dualQueue dualStack 双FIFO(先进先出)排队） SynchronousQueue cas实现竞争
      */
     SynchronousQueue<Runnable> tasks = new SynchronousQueue<>(false);
     //区分方法 来消费 transfer方法 和SynchronousQueue类似
