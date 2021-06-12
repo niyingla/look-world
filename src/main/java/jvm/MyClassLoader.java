@@ -24,6 +24,13 @@ public class MyClassLoader {
     private static byte[] genClass(){
         //创建池子 用于保存运行时数据
         ClassPool pool = ClassPool.getDefault();
+        //是否已经存在
+        CtClass aClass = pool.getOrNull("greetings.Go");
+        //已经存在并且冻结了
+        if (aClass != null && aClass.isFrozen()) {
+            //解冻
+            aClass.defrost();
+        }
         //产生一个类
         CtClass ctClass = pool.makeClass("greetings.Go");
         //为类产生方法 返回值类型 方法名 参数类型（这里没有 就是空数组）  类对象
