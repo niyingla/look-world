@@ -28,6 +28,7 @@ public class EmptyObject {
         //16
         int x = 1;
         System.out.println(InstrumentationAgent.getObjectSize(x));
+        //空对象 至少16字节 一定是8的倍数 会有对齐位
     }
 
 }
