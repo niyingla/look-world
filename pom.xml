@@ -20,6 +20,7 @@
     </build>
 
     <dependencies>
+        <!---->
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
             <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
@@ -32,7 +33,12 @@
             <version>4.0.3</version>
         </dependency>
 
-
+ <!--       <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-core</artifactId>
+            <version>8.7.0</version>
+        </dependency>
+-->
         <dependency>
             <groupId>io.reactivex</groupId>
             <artifactId>rxjava</artifactId>
@@ -52,7 +58,6 @@
             <artifactId>javassist</artifactId>
             <version>3.27.0-GA</version>
         </dependency>
-
 
         <dependency>
             <groupId>com.google.guava</groupId>
