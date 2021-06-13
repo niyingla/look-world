@@ -52,29 +52,29 @@ public class DivideTable {
                 .subscribe(o ->
                         // newThread开始 一步执行订阅内容
                         o.subscribeOn(Schedulers.newThread())
-                                //start - end 之间的当前订阅数
-                                .subscribe(batchId -> {
-                                    try {
-                                        batchId = counter.incrementAndGet();
-                                        //获取当前线程链接
-                                        Connection connection = threadLocal.get();
-                                        //查询数据
-                                        try ( Statement statement = connection.createStatement()) {
-                                            //查询結果
-                                            ResultSet resultSet = statement.executeQuery(String.format("select * from huge.user limit %d , %d ", batchId * 10000 * 10000));
-                                            //插入数据
-                                            copy("t_user", resultSet, threadLocal.get());
-                                            //关闭
-                                            resultSet.close();
-                                        }
-                                        //计数
-                                        countDownLatch.countDown();
-                                        //打印
-                                        System.out.format("% finished %d/%d\n ", batchId, batch - countDownLatch.getCount(), batch);
-                                    } catch (SQLException e) {
-                                        e.printStackTrace();
-                                    }
-                                }));
+                        //start - end 之间的当前订阅数
+                        .subscribe(batchId -> {
+                            try {
+                                batchId = counter.incrementAndGet();
+                                //获取当前线程链接
+                                Connection connection = threadLocal.get();
+                                //查询数据
+                                try ( Statement statement = connection.createStatement()) {
+                                    //查询結果
+                                    ResultSet resultSet = statement.executeQuery(String.format("select * from huge.user limit %d , %d ", batchId * 10000 * 10000));
+                                    //插入数据
+                                    copy("t_user", resultSet, threadLocal.get());
+                                    //关闭
+                                    resultSet.close();
+                                }
+                                //计数
+                                countDownLatch.countDown();
+                                //打印
+                                System.out.format("% finished %d/%d\n ", batchId, batch - countDownLatch.getCount(), batch);
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
+                        }));
         //线程等待
         countDownLatch.await();
     }
