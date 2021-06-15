@@ -1,5 +1,8 @@
 package jvm;
 
+/**
+ * 反编译前 类信息
+ */
 public class DecompileTest {
     public static String s = "@Hello";
     public String add(int a, int b){
