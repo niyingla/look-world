@@ -2,9 +2,11 @@ package coding.annotation;
 
 import java.lang.annotation.*;
 
+/**
+ * 使用此注解会转化@Aspect合并变成@Aspects
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Repeatable(Aspects.class)
-public @interface Aspect {
-    Class[] types();
+public @interface Aspects {
+    Aspect[] value();
 }

@@ -14,13 +14,15 @@ public class ObjectFactory {
     public static <T> T newInstance(Class<T> clazz) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
 
         Annotation[] annotations = clazz.getAnnotations();
-        LinkedList<IAspect> aspects = new LinkedList<IAspect>();
+        LinkedList<IAspect> aspects = new LinkedList<>();
 
         for(var annotation : annotations) {
-            if(annotation instanceof  Aspect) {
-                Class type = ((Aspect) annotation).type();
-                IAspect aspect = (IAspect)(type.getConstructor().newInstance());
-                aspects.push(aspect);
+            if (annotation instanceof Aspect) {
+                Class[] types = ((Aspect) annotation).types();
+                for (Class type : types) {
+                    IAspect aspect = (IAspect) (type.getConstructor().newInstance());
+                    aspects.push(aspect);
+                }
             }
         }
 
