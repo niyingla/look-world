@@ -16,11 +16,11 @@ public class EQueen {
 
         // i : row 每列尝试放入皇后
         for(int i = 0; i < 8; i++) {
-            //设置当前位置（行） 为当前列 皇后
-            queens[col] = i;
-
             //本次是否可以放置
             boolean flag = true;
+
+            //设置当前位置（行） 为当前列 皇后
+            queens[col] = i;
 
             //判断之前是否满足 j 当前列
             for(int j = 0; j < col; j++) {
@@ -49,10 +49,9 @@ public class EQueen {
 
             for(int j = 0; j < 8; j++) {
                 if(queens[i] == j) {
-                    System.out.print("Q");
+                    System.out.print(" Q ");
                 } else {
-
-                    System.out.print(".");
+                    System.out.print(" . ");
                 }
 
             }

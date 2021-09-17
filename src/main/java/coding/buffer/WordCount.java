@@ -76,11 +76,8 @@ public class WordCount {
             // Device -> Kernel Space -> UserSpace(buffer) -> Thread
             //文件通道的可读可写要建立在文件流本身可读写的基础之上
             //把文件影射为内存映像文件
-            MappedByteBuffer mbuf = channel.map(
-                    FileChannel.MapMode.READ_ONLY,
-                    this.start,
-                    this.end - this.start
-            );
+            MappedByteBuffer mbuf = channel.map(FileChannel.MapMode.READ_ONLY, this.start, this.end - this.start);
+            //解码成并换成string
             String str = StandardCharsets.US_ASCII.decode(mbuf).toString();
             return countByString(str);
         }

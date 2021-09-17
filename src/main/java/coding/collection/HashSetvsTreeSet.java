@@ -16,11 +16,11 @@ public class HashSetvsTreeSet  {
         hashSet.add(81);
 
 
+        //无序
         System.out.println(hashSet.stream().map(x -> x.toString()).collect(Collectors.joining(",")));
 
 
-        var treeSet = new TreeSet<Integer>(){
-            {
+        var treeSet = new TreeSet<Integer>(){{
                 add(3);
                 add(7);
                 add(2);
@@ -29,7 +29,7 @@ public class HashSetvsTreeSet  {
         };
 
 
-
+        //有序
         System.out.println(treeSet.stream().map(x -> x.toString()).collect(Collectors.joining(",")));
     }
 

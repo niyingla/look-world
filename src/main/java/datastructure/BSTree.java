@@ -128,7 +128,7 @@ public class BSTree<T extends Comparable<T>> {
         var queue = new Queue<BSTNode<T>>();
         //进入队列
         queue.enqueue(node);
-
+        //只要有子元素 就会往队列填充
         while(queue.size() > 0) {
             //出队
             var item = queue.dequeue();
@@ -142,6 +142,11 @@ public class BSTree<T extends Comparable<T>> {
         }
     }
 
+    /**
+     * 左右翻转
+     * @param node
+     * @param <T>
+     */
     public static <T> void reverse(BSTNode<T> node) {
         if(node == null) {
             return;

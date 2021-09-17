@@ -71,7 +71,7 @@ public class List<T> {
         if(head == null) {
             return;
         }
-
+        //删除头元素 直接将头元素指向像一个元素
         if(head == node) {
             head = head.next;
             return;

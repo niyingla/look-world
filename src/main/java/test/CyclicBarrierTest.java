@@ -23,6 +23,7 @@ public class CyclicBarrierTest {
         while(page < 1000) {
             try {
                 System.out.println("fetch product...");
+                //等待点
                 int x = barrier.await();
                 if(x == 2) {
 
@@ -42,6 +43,7 @@ public class CyclicBarrierTest {
         while (page < 1000) {
             try {
                 System.out.println("fetch delivery order...");
+                //等待点
                 barrier.await();
             } catch (InterruptedException e) {
                 e.printStackTrace();

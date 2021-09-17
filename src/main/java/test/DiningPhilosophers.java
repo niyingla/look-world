@@ -16,17 +16,19 @@ public class DiningPhilosophers {
         HUNGRY,
         EATING
     }
+
     static class Philosopher implements Runnable {
 
         private static Philosopher[] philosophers;
         private static Integer[] forks;
         private static boolean[] dirty;
         private PHIS state = PHIS.THINKING;
+
         static {
             philosophers = new Philosopher[5];
             forks = new Integer[5];
             dirty = new boolean[5];
-            for(int i = 0; i < 5; i++) {
+            for (int i = 0; i < 5; i++) {
                 philosophers[i] = new Philosopher(i);
                 forks[i] = -1;
                 dirty[i] = true;
@@ -34,7 +36,7 @@ public class DiningPhilosophers {
         }
 
         private static int LEFT(int i) {
-            return i == 0 ? 4 : i-1;
+            return i == 0 ? 4 : i - 1;
         }
 
         public Philosopher(int id) {
@@ -45,21 +47,22 @@ public class DiningPhilosophers {
 
         void think() throws InterruptedException {
             System.out.println(String.format("Philosopher %d thinking...", id));
-            Thread.sleep((long) Math.floor(Math.random()*1000));
+            Thread.sleep((long) Math.floor(Math.random() * 1000));
             this.state = PHIS.HUNGRY;
         }
+
         void eat() throws InterruptedException {
             synchronized (forks) {
-                    System.out.println(Arrays.toString(forks));
-                    //System.out.println(Arrays.toString(dirty));
-                    if(forks[LEFT(id)] == id && forks[id] == id) {
-                        this.state = PHIS.EATING;
-                    } else {
-                        return;
-                    }
+                System.out.println(Arrays.toString(forks));
+                //System.out.println(Arrays.toString(dirty));
+                if (forks[LEFT(id)] == id && forks[id] == id) {
+                    this.state = PHIS.EATING;
+                } else {
+                    return;
+                }
             }
             System.out.println(String.format("Philosopher %d eating...", id));
-            Thread.sleep((long) Math.floor(Math.random()*1000));
+            Thread.sleep((long) Math.floor(Math.random() * 1000));
 
             synchronized (forks) {
                 dirty[LEFT(id)] = true;
@@ -92,11 +95,11 @@ public class DiningPhilosophers {
         void take(int i) throws InterruptedException {
 
             synchronized (forks[i]) {
-                if(forks[i] == -1) {
+                if (forks[i] == -1) {
                     _take(id);
                 } else {
                     Philosopher other = philosophers[forks[i]];
-                    if(other.state != PHIS.EATING && dirty[i]) {
+                    if (other.state != PHIS.EATING && dirty[i]) {
                         other._transfer(i, forks[i]);
                     }
                 }
@@ -112,7 +115,7 @@ public class DiningPhilosophers {
         @Override
         public void run() {
             try {
-                while(true) {
+                while (true) {
                     think();
                     while (state == PHIS.HUNGRY) {
                         takeForks();
@@ -129,7 +132,7 @@ public class DiningPhilosophers {
 
     public static void main(String[] args) {
 
-        for(int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             new Thread(new Philosopher(i)).start();
         }
 

@@ -9,7 +9,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-@Aspect(type=TimeUsageAspect.class)
+@Aspect(type = TimeUsageAspect.class)
 public class Order implements IOrder {
 
     int state = 0;

@@ -60,7 +60,7 @@ public class DiningPhilosophersBlockingQueue implements Runnable {
                 try{
                     phi = workingQueue.take();
                     if(phi.getState()=="Hungry") {
-                        var delayItem = new DelayInterruptingThread(Thread.currentThread(), 1000);
+                        DelayInterruptingThread delayItem = new DelayInterruptingThread(Thread.currentThread(), 1000);
                         delayQueue.offer(delayItem);
                         phi.eating();
                         delayItem.commit();

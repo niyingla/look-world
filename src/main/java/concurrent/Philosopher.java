@@ -12,8 +12,8 @@ public class Philosopher implements Runnable{
         this.state = state;
     }
 
-    String state;
     int id;
+    String state;
     int count = 0;
     static AtomicInteger total = new AtomicInteger(0);
     static long startMills = System.currentTimeMillis();
@@ -88,7 +88,7 @@ public class Philosopher implements Runnable{
         int t = total.incrementAndGet();
         double speed = (t * 1000.0) / (System.currentTimeMillis() - startMills);
         this.state = "Thinking";
-        System.out.format("Philosopher %d finished %d times, speed = %.2f.\n",
+        System.out.format("Philosopher %d finished %d times, speed = %.2f\n",
                 this.id,
                 this.count,
                 speed

@@ -7,10 +7,12 @@ public class InsertionSort implements IMutableSorter {
             // 将A[i] 插入在卡片0，到卡片i之间
             // j代表抓到的牌，先放到最右侧，不断交换到对应的位置
 
+            //当前需要排序的元素
             int c = A[i];
+            //递减的起始位置
             int j = i;
 
-            //换位
+            //换位 （和）
             for(; j > 0 && A[j-1] > c;j--) {
                 A[j] = A[j-1];
             }

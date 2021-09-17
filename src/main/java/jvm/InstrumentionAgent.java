@@ -19,7 +19,7 @@ class InstrumentationAgent {
      * @param agentArgs
      * @param inst
      */
-    public static void premain(final String agentArgs, final Instrumentation inst) {
+    public static void premain(final String agentArgs, final Instrumentation inst)  {
         globalInstrumentation = inst;
     }
 
