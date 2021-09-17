@@ -23,6 +23,10 @@ public class Philosopher implements Runnable{
         this.state = "Thinking";
     }
 
+    /**
+     * 切换state状态 从 Thinking 到 Hungry
+     * @throws InterruptedException
+     */
     public void thinking() throws InterruptedException {
         if(this.state == "Thinking") {
             Thread.sleep((long)(Math.random()*100));

@@ -1,8 +1,6 @@
 package concurrent;
 
 
-import java.util.Arrays;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 
 public class DiningPhilosophersDeadlock {
@@ -34,6 +32,7 @@ public class DiningPhilosophersDeadlock {
             return super.takeRight(forks);
         }
 
+        @Override
         public void run(){
             while(true) {
                 try {

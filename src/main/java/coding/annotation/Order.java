@@ -3,13 +3,11 @@ package coding.annotation;
 
 import org.junit.Test;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-@Aspect(type = TimeUsageAspect.class)
+@Aspect(types = TimeUsageAspect.class)
 public class Order implements IOrder {
 
     int state = 0;
