@@ -203,6 +203,8 @@ public class BSTree<T extends Comparable<T>> {
 
         BSTree.reverse(tree.root);
         printer.print(tree.root);
+
+        inOrder(tree.root);
     }
 
 }

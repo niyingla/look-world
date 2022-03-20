@@ -30,7 +30,7 @@ public class TreePrinter {
         int W = (int) Math.pow(2, h + 1);
         //每行数据
         var lines = new StringBuilder[h * 2];
-        for(int i = 0; i < h*2; i++) {
+        for(int i = 0; i < h * 2; i++) {
             //创建打印数据行
             lines[i] = new StringBuilder(String.format("%" + W + "s", ""));
         }
@@ -58,7 +58,7 @@ public class TreePrinter {
         var pos = base + (int) (W / (nums * 2));
         //获取数据字符串
         var str = node.data.toString();
-        //循环插入数据
+        //循环插入数据 (一个字符一个字符插入)
         for (int i = 0; i < str.length(); i++) {
             //插入数据
             lines[h * 2].setCharAt(pos + i, str.charAt(i));
